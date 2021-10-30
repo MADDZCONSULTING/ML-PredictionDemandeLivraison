@@ -1,7 +1,10 @@
 from sqlalchemy import and_, func
-from db.classes import HistoriqueDemande
-from app.main import db
+#from db.classes import HistoriqueDemande
+#from app.main import db
 import pandas as pd
+from src.db.classes import HistoriqueDemande
+from src.app.main import db
+
 
 
 def get_demande_jour(jour):

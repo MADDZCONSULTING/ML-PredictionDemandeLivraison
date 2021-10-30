@@ -1,4 +1,5 @@
-from app.main import db
+#from app.main import db
+from src.app.main import db
 
 
 class HistoriqueDemande(db.Model):

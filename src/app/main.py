@@ -1,16 +1,24 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
-from model.trainings import retrain_demande_prediction
+#from model.trainings import retrain_demande_prediction
+from src.model.trainings import retrain_demande_prediction
+
+
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\PC Asus\\PycharmProjects\\DeliveryRatePrediction_11\\test.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\dell\\PycharmProjects\\PFE\\test.sqlite'
 db = SQLAlchemy(app)
 
-from app.invalid_usage import InvalidUsage
-from app.validation import validate_livraison, validate_demande
-from model.predictions import get_prediction_livraison, get_prediction_demande
-from db.data_access import *
+from src.app.invalid_usage import InvalidUsage
+from src.app.validation import validate_livraison, validate_demande
+from src.model.predictions import get_prediction_livraison, get_prediction_demande
+from src.db.data_access import *
+
+#from app.invalid_usage import InvalidUsage
+#from app.validation import validate_livraison, validate_demande
+#from model.predictions import get_prediction_livraison, get_prediction_demande
+#from db.data_access import *
 
 @app.errorhandler(InvalidUsage)
 def handle_invalid_usage(error):
@@ -77,4 +85,4 @@ def retrain_predict():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run()
